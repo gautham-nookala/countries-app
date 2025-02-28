@@ -1,6 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
+// Reusable Card Component
+interface CardProps {
+  title: string;
+  value: string;
+  className?: string;
+}
+
+const InfoCard = ({ title, value, className = "" }: CardProps) => (
+  <div className={`bg-white rounded-xl shadow-card p-6 ${className}`}>
+    <p className="font-assistant text-base font-normal text-header-text mb-8">
+      {title}
+    </p>
+    <p className="font-assistant font-normal text-3xl text-column-text leading-6">
+      {value}
+    </p>
+  </div>
+);
+
+// Flag Card Component
+interface FlagCardProps {
+  flagSvg?: string;
+  flagPng?: string;
+  flagAlt?: string;
+  countryName: string;
+}
+
+const FlagCard = ({
+  flagSvg,
+  flagPng,
+  flagAlt,
+  countryName,
+}: FlagCardProps) => (
+  <div className="bg-white rounded-xl shadow-card p-6 flex flex-col gap-8 w-full md:w-80">
+    <div className="w-full">
+      <p className="font-assistant text-base font-normal text-header-text mb-2">
+        Country Flag
+      </p>
+    </div>
+    {(flagSvg || flagPng) && (
+      <img
+        src={flagSvg || flagPng}
+        alt={flagAlt || `Flag of ${countryName}`}
+        className="w-full h-auto rounded-xl"
+      />
+    )}
+  </div>
+);
+
+// Country Detail Interface
 interface CountryDetail {
   name: {
     common: string;
@@ -24,6 +73,7 @@ interface CountryDetail {
   };
 }
 
+// Country Detail Component
 const CountryDetail: React.FC = () => {
   const { countryId } = useParams<{ countryId: string }>();
   const [country, setCountry] = useState<CountryDetail | null>(null);
@@ -50,6 +100,7 @@ const CountryDetail: React.FC = () => {
       });
   }, [countryId]);
 
+  // Loading State
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-app-bg">
@@ -58,6 +109,7 @@ const CountryDetail: React.FC = () => {
     );
   }
 
+  // Error State
   if (error || !country) {
     return (
       <div className="container mx-auto p-4 text-center bg-app-bg">
@@ -71,15 +123,11 @@ const CountryDetail: React.FC = () => {
     );
   }
 
-  // Format population with commas
+  // Data Preparation
   const formattedPopulation = country.population.toLocaleString();
-
-  // Get languages as a comma-separated string
   const languages = country.languages
     ? Object.values(country.languages)[0] || "N/A"
     : "N/A";
-
-  // Get currencies as a string
   const currency = country.currencies
     ? Object.values(country.currencies)[0].name
     : "N/A";
@@ -98,66 +146,24 @@ const CountryDetail: React.FC = () => {
       </h1>
 
       <div className="flex flex-col md:flex-row gap-4">
-        {/* Flag card */}
-        <div className="bg-white rounded-xl shadow-card p-6 flex flex-col gap-8 w-full md:w-80">
-          <div className="w-full">
-            <p className="font-assistant text-base font-normal text-header-text mb-2">
-              Country Flag
-            </p>
-          </div>
-          {country.flags && (
-            <img
-              src={country.flags.svg || country.flags.png}
-              alt={country.flags.alt || `Flag of ${country.name.common}`}
-              className="w-full h-auto rounded-xl"
-            />
-          )}
-        </div>
+        {/* Flag Card */}
+        <FlagCard
+          flagSvg={country.flags.svg}
+          flagPng={country.flags.png}
+          flagAlt={country.flags.alt}
+          countryName={country.name.common}
+        />
 
         {/* Center column - Population and Language */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
-          {/* Population card */}
-          <div className="bg-white rounded-xl shadow-card p-6">
-            <p className="font-assistant text-base font-normal text-header-text mb-8">
-              Population
-            </p>
-            <p className="font-assistant font-normal text-3xl text-column-text leading-6">
-              {formattedPopulation}
-            </p>
-          </div>
-
-          {/* Language card */}
-          <div className="bg-white rounded-xl shadow-card p-6">
-            <p className="font-assistant text-base font-normal text-header-text mb-8">
-              Language
-            </p>
-            <p className="font-assistant font-normal text-3xl text-column-text leading-6">
-              {languages}
-            </p>
-          </div>
+          <InfoCard title="Population" value={formattedPopulation} />
+          <InfoCard title="Language" value={languages} />
         </div>
 
         {/* Right column - Capital and Currency */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
-          {/* Capital card */}
-          <div className="bg-white rounded-xl shadow-card p-6">
-            <p className="font-assistant text-base font-normal text-header-text mb-8">
-              Capital
-            </p>
-            <p className="font-assistant font-normal text-3xl text-column-text leading-6">
-              {country.capital?.[0] || "N/A"}
-            </p>
-          </div>
-
-          {/* Currency card */}
-          <div className="bg-white rounded-xl shadow-card p-6">
-            <p className="font-assistant text-base font-normal text-header-text mb-8">
-              Currency
-            </p>
-            <p className="font-assistant font-normal text-3xl text-column-text leading-6">
-              {currency}
-            </p>
-          </div>
+          <InfoCard title="Capital" value={country.capital?.[0] || "N/A"} />
+          <InfoCard title="Currency" value={currency} />
         </div>
       </div>
     </div>
