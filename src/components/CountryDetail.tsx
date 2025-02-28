@@ -95,8 +95,8 @@ const CountryDetail = () => {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Flag Card */}
         <ImageCard
-          svg={country.flags.svg}
-          png={country.flags.png}
+          title="Country Flag"
+          image={country.flags.svg || country.flags.png || ''}
           alt={country.flags.alt}
           countryName={name}
         />
