@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SearchInput from "./Search";
 
 interface Country {
   cca3: string;
@@ -9,9 +10,11 @@ interface Country {
   continents: string[];
 }
 
-const CountriesList: React.FC = () => {
+const CountriesList = () => {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -22,6 +25,7 @@ const CountriesList: React.FC = () => {
           a.name.common.localeCompare(b.name.common)
         );
         setCountries(sortedCountries);
+        setFilteredCountries(sortedCountries);
         setLoading(false);
       })
       .catch((error) => {
@@ -29,6 +33,19 @@ const CountriesList: React.FC = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+
+    // Filter countries based on name or continent
+    const filtered = countries.filter(
+      (country) =>
+        country.name.common.toLowerCase().includes(query.toLowerCase()) ||
+        country.continents[0]?.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredCountries(filtered);
+  };
 
   if (loading) {
     return (
@@ -44,48 +61,62 @@ const CountriesList: React.FC = () => {
         Countries
       </h1>
 
-      <h2 className="font-inter text-base font-normal mb-6 text-subtitle-color">
+      <h2 className="font-inter text-base font-normal mb-11 text-subtitle-color">
         A database of the countries of the world
       </h2>
 
-      {/* Table layout - more structured approach */}
-      <div className="w-full mb-4">
-        <div className="grid grid-cols-12">
-          <div className="col-span-3 pl-12 font-assistant text-sm font-normal text-header-text">
-            Country Identifier
-          </div>
-          <div className="col-span-5 font-assistant text-sm font-normal text-header-text">
-            Country
-          </div>
-          <div className="col-span-4 font-assistant text-sm font-normal text-header-text">
-            Continent
-          </div>
+      <div className="mb-10">
+        <SearchInput onSearch={handleSearch} placeholder="Search" />
+      </div>
+
+      {/* Conditional rendering for search results or no results */}
+      {filteredCountries.length === 0 ? (
+        <div className="text-center text-header-text">
+          No countries found matching "{searchQuery}"
         </div>
-      </div>
-
-      <div className="flex flex-col gap-4">
-        {countries.map((country) => (
-          <Link
-            to={`/country/${country.cca3}`}
-            key={country.cca3}
-            className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
-          >
-            <div className="grid grid-cols-12 h-full items-center">
-              <div className="col-span-3 pl-12 flex items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
+      ) : (
+        <>
+          {/* Table header */}
+          <div className="w-full mb-4">
+            <div className="grid grid-cols-12">
+              <div className="col-span-3 pl-12 font-assistant text-sm font-normal text-header-text">
+                Country Identifier
               </div>
-
-              <h2 className="col-span-5 font-assistant text-base font-semibold text-column-text">
-                {country.name.common}
-              </h2>
-
-              <p className="col-span-4 font-assistant text-base font-semibold text-column-text">
-                {country.continents[0] ?? ""}
-              </p>
+              <div className="col-span-5 font-assistant text-sm font-normal text-header-text">
+                Country
+              </div>
+              <div className="col-span-4 font-assistant text-sm font-normal text-header-text">
+                Continent
+              </div>
             </div>
-          </Link>
-        ))}
-      </div>
+          </div>
+
+          {/* Countries list */}
+          <div className="flex flex-col gap-4">
+            {filteredCountries.map((country) => (
+              <Link
+                to={`/country/${country.cca3}`}
+                key={country.cca3}
+                className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="grid grid-cols-12 h-full items-center">
+                  <div className="col-span-3 pl-12 flex items-center">
+                    <div className="w-12 h-12 rounded-full bg-gray-100"></div>
+                  </div>
+
+                  <h2 className="col-span-5 font-assistant text-base font-semibold text-column-text">
+                    {country.name.common}
+                  </h2>
+
+                  <p className="col-span-4 font-assistant text-base font-semibold text-column-text">
+                    {country.continents[0] ?? ""}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
