@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Card, ImageCard } from "./Cards";
+import PageHeader from "./PageHeader";
 
 // Country Detail Interface
 interface CountryDetail {
@@ -85,18 +86,11 @@ const CountryDetail = () => {
     ? Object.values(country.currencies)[0].name
     : "N/A";
 
+  const name = country.name.common;
+
   return (
     <div className="container mx-auto p-4 bg-app-bg">
-      <Link
-        to="/"
-        className="inline-block mb-6 text-heading-color hover:underline font-inter"
-      >
-        ← Back to all countries
-      </Link>
-
-      <h1 className="font-inter text-3xl font-semibold text-heading-color mb-6">
-        {country.name.common}
-      </h1>
+      <PageHeader title={name} subtitle={`A short description about ${name}`} />
 
       <div className="flex flex-col md:flex-row gap-4">
         {/* Flag Card */}
@@ -104,7 +98,7 @@ const CountryDetail = () => {
           svg={country.flags.svg}
           png={country.flags.png}
           alt={country.flags.alt}
-          countryName={country.name.common}
+          countryName={name}
         />
 
         {/* Center column - Population and Language */}
