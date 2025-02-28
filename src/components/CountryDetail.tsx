@@ -9,40 +9,33 @@ interface CardProps {
 }
 
 const InfoCard = ({ title, value, className = "" }: CardProps) => (
-  <div className={`bg-white rounded-xl shadow-card p-6 ${className}`}>
-    <p className="font-assistant text-base font-normal text-header-text mb-8">
-      {title}
-    </p>
-    <p className="font-assistant font-normal text-3xl text-column-text leading-6 capitalize">
-      {value}
-    </p>
+  <div
+    className={`bg-white rounded-xl shadow-card p-6 font-assistant captialize ${className}`}
+  >
+    <p className="text-base font-normal text-header-text mb-8">{title}</p>
+    <p className="font-normal text-3xl text-column-text leading-6">{value}</p>
   </div>
 );
 
-// Flag Card Component
-interface FlagCardProps {
-  flagSvg?: string;
-  flagPng?: string;
-  flagAlt?: string;
+// Image Card Component
+interface ImageCardProps {
+  svg?: string;
+  png?: string;
+  alt?: string;
   countryName: string;
 }
 
-const FlagCard = ({
-  flagSvg,
-  flagPng,
-  flagAlt,
-  countryName,
-}: FlagCardProps) => (
-  <div className="bg-white rounded-xl shadow-card p-6 flex flex-col gap-8 w-full md:w-80">
+const ImageCard = ({ svg, png, alt, countryName }: ImageCardProps) => (
+  <div className="bg-white rounded-xl shadow-card p-6 flex flex-col gap-8 w-full md:w-80 font-assistant">
     <div className="w-full">
-      <p className="font-assistant text-base font-normal text-header-text mb-2">
+      <p className="text-base font-normal text-header-text mb-2">
         Country Flag
       </p>
     </div>
-    {(flagSvg || flagPng) && (
+    {(svg || png) && (
       <img
-        src={flagSvg || flagPng}
-        alt={flagAlt || `Flag of ${countryName}`}
+        src={svg || png}
+        alt={alt || `Flag of ${countryName}`}
         className="w-full h-auto rounded-xl"
       />
     )}
@@ -74,7 +67,7 @@ interface CountryDetail {
 }
 
 // Country Detail Component
-const CountryDetail: React.FC = () => {
+const CountryDetail = () => {
   const { countryId } = useParams<{ countryId: string }>();
   const [country, setCountry] = useState<CountryDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -147,10 +140,10 @@ const CountryDetail: React.FC = () => {
 
       <div className="flex flex-col md:flex-row gap-4">
         {/* Flag Card */}
-        <FlagCard
-          flagSvg={country.flags.svg}
-          flagPng={country.flags.png}
-          flagAlt={country.flags.alt}
+        <ImageCard
+          svg={country.flags.svg}
+          png={country.flags.png}
+          alt={country.flags.alt}
           countryName={country.name.common}
         />
 
