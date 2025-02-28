@@ -14,7 +14,7 @@ const CountriesList: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all?fields=name,continents,cca3")
+    fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
       .then((data) => {
         // Sort countries alphabetically by name
@@ -48,20 +48,21 @@ const CountriesList: React.FC = () => {
         A database of the countries of the world
       </h2>
 
-      {/* Column Headers */}
-      <div className="flex items-center p-4 mb-4">
-        {/* First column - country identifier with circle */}
-        <div className="ml-12 w-12 flex justify-center">
-          <span className="text-sm font-normal text-header-text">ID</span>
+      <div className="grid grid-cols-12 p-4 mb-4">
+        {/* First column - country identifier */}
+        <div className="col-span-3 pl-12 flex justify-start">
+          <span className="text-sm font-normal text-header-text">
+            Country Identifier
+          </span>
         </div>
 
-        {/* 120px minimum spacing */}
-        <div className="ml-32 w-56">
+        {/* Second column - country */}
+        <div className="col-span-6 flex justify-start">
           <span className="text-sm font-normal text-header-text">Country</span>
         </div>
 
         {/* Third column - continent */}
-        <div className="ml-32 w-80">
+        <div className="col-span-3 flex justify-start">
           <span className="text-sm font-normal text-header-text">
             Continent
           </span>
@@ -75,21 +76,21 @@ const CountriesList: React.FC = () => {
             key={country.cca3}
             className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="flex items-center h-full">
-              {/* First column - country identifier with circle */}
-              <div className="ml-12 flex justify-center">
+            <div className="grid grid-cols-12 h-full items-center">
+              {/* First column - circle */}
+              <div className="col-span-3 pl-12 flex justify-start items-center">
                 <div className="w-12 h-12 rounded-full bg-gray-200"></div>
               </div>
 
-              {/* Second column - country name with 120px minimum distance (ml-32) */}
-              <div className="ml-32 w-56">
+              {/* Second column - country name */}
+              <div className="col-span-6 flex justify-start">
                 <h2 className="text-base font-semibold text-column-text">
                   {country.name.common}
                 </h2>
               </div>
 
-              {/* Third column - continent with 120px minimum distance (ml-32) */}
-              <div className="ml-32 w-80">
+              {/* Third column - continent */}
+              <div className="col-span-3 flex justify-start">
                 <p className="text-base font-semibold text-column-text">
                   {country.continents[0] ?? ""}
                 </p>
