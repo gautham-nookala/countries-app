@@ -13,7 +13,7 @@ const InfoCard = ({ title, value, className = "" }: CardProps) => (
     <p className="font-assistant text-base font-normal text-header-text mb-8">
       {title}
     </p>
-    <p className="font-assistant font-normal text-3xl text-column-text leading-6">
+    <p className="font-assistant font-normal text-3xl text-column-text leading-6 capitalize">
       {value}
     </p>
   </div>
