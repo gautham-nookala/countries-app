@@ -13,7 +13,7 @@ const App: React.FC = () => {
         <Sidebar />
 
         {/* Main content area with responsive margin */}
-        <div className="w-full md:ml-72 transition-all duration-300 p-4">
+        <div className="w-full md:ml-72 transition-all duration-300 p-12">
           <Routes>
             <Route path="/" element={<CountriesList />} />
             <Route path="/country/:countryId" element={<CountryDetail />} />

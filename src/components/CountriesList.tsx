@@ -71,30 +71,36 @@ const CountriesList = () => {
   }
 
   return (
-    <div>
-      <PageHeader
-        title="Countries"
-        subtitle="A database of the countries of the world"
-      />
+    <div className="flex flex-col h-full">
+      {/* Fixed header section */}
+      <div className="sticky top-0 bg-app-bg z-10 pb-4">
+        <PageHeader
+          title="Countries"
+          subtitle="A database of the countries of the world"
+        />
 
-      <div className="mb-10">
-        <SearchInput onSearch={handleSearch} placeholder="Search" />
+        <div className="mb-6">
+          <SearchInput onSearch={handleSearch} placeholder="Search" />
+        </div>
+
+        {/* Table headers - also fixed */}
+        <div className="w-full mb-4">
+          <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
+            <div className="col-span-3 pl-12">Country Identifier</div>
+            <div className="col-span-5">Country</div>
+            <div className="col-span-4">Continent</div>
+          </div>
+        </div>
       </div>
 
-      {/* Conditional rendering for search results or no results */}
-      {filteredCountries.length === 0 ? (
-        <NoResultsState searchQuery={searchQuery} />
-      ) : (
-        <>
-          <div className="w-full mb-4">
-            <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
-              <div className="col-span-3 pl-12">Country Identifier</div>
-              <div className="col-span-5">Country</div>
-              <div className="col-span-4">Continent</div>
-            </div>
-          </div>
-
-          {/* Countries list */}
+      {/* Scrollable content area */}
+      <div
+        className="overflow-y-auto"
+        style={{ maxHeight: "calc(100vh - 15em)" }}
+      >
+        {filteredCountries.length === 0 ? (
+          <NoResultsState searchQuery={searchQuery} />
+        ) : (
           <div className="flex flex-col gap-4">
             {filteredCountries.map((country) => (
               <CountryListItem
@@ -105,8 +111,8 @@ const CountriesList = () => {
               />
             ))}
           </div>
-        </>
-      )}
+        )}
+      </div>
     </div>
   );
 };
