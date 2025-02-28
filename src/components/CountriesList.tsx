@@ -22,16 +22,10 @@ const PageHeader = ({ title, subtitle }: PageHeaderProps) => (
 // Reusable DataTableHeader Component
 const DataTableHeader = () => (
   <div className="w-full mb-4">
-    <div className="grid grid-cols-12">
-      <div className="col-span-3 pl-12 font-assistant text-sm font-normal text-header-text">
-        Country Identifier
-      </div>
-      <div className="col-span-5 font-assistant text-sm font-normal text-header-text">
-        Country
-      </div>
-      <div className="col-span-4 font-assistant text-sm font-normal text-header-text">
-        Continent
-      </div>
+    <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
+      <div className="col-span-3 pl-12">Country Identifier</div>
+      <div className="col-span-5">Country</div>
+      <div className="col-span-4">Continent</div>
     </div>
   </div>
 );
@@ -48,18 +42,14 @@ const CountryListItem = ({ cca3, name, continent }: CountryListItemProps) => (
     to={`/country/${cca3}`}
     className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
   >
-    <div className="grid grid-cols-12 h-full items-center">
+    <div className="grid grid-cols-12 h-full items-center font-assistant text-base font-semibold text-column-text">
       <div className="col-span-3 pl-12 flex items-center">
         <div className="w-12 h-12 rounded-full bg-gray-100"></div>
       </div>
 
-      <h2 className="col-span-5 font-assistant text-base font-semibold text-column-text">
-        {name}
-      </h2>
+      <h2 className="col-span-5">{name}</h2>
 
-      <p className="col-span-4 font-assistant text-base font-semibold text-column-text">
-        {continent}
-      </p>
+      <p className="col-span-4">{continent}</p>
     </div>
   </Link>
 );
