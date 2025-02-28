@@ -50,7 +50,7 @@ const CountriesList: React.FC = () => {
 
       {/* Table layout - more structured approach */}
       <div className="w-full mb-4">
-        <div className="grid grid-cols-12 py-4">
+        <div className="grid grid-cols-12">
           <div className="col-span-3 pl-12 font-assistant text-sm font-normal text-header-text">
             Country Identifier
           </div>
