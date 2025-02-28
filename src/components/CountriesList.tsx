@@ -32,14 +32,14 @@ const CountriesList: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-app-bg">
         <div className="text-2xl font-bold text-column-text">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-app-bg">
       <h1 className="font-inter text-5xl font-semibold leading-tight mb-3 text-left text-heading-color">
         Countries
       </h1>
@@ -48,28 +48,22 @@ const CountriesList: React.FC = () => {
         A database of the countries of the world
       </h2>
 
-      <div className="grid grid-cols-12 p-4 mb-4">
-        {/* First column - country identifier */}
-        <div className="col-span-3 pl-12 flex justify-start">
-          <span className="text-sm font-normal text-header-text">
+      {/* Table layout - more structured approach */}
+      <div className="w-full mb-4">
+        <div className="grid grid-cols-12 py-4">
+          <div className="col-span-3 pl-12 font-assistant text-sm font-normal text-header-text">
             Country Identifier
-          </span>
-        </div>
-
-        {/* Second column - country */}
-        <div className="col-span-6 flex justify-start">
-          <span className="text-sm font-normal text-header-text">Country</span>
-        </div>
-
-        {/* Third column - continent */}
-        <div className="col-span-3 flex justify-start">
-          <span className="text-sm font-normal text-header-text">
+          </div>
+          <div className="col-span-5 font-assistant text-sm font-normal text-header-text">
+            Country
+          </div>
+          <div className="col-span-4 font-assistant text-sm font-normal text-header-text">
             Continent
-          </span>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="flex flex-col gap-4">
         {countries.map((country) => (
           <Link
             to={`/country/${country.cca3}`}
@@ -77,24 +71,17 @@ const CountriesList: React.FC = () => {
             className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
           >
             <div className="grid grid-cols-12 h-full items-center">
-              {/* First column - circle */}
-              <div className="col-span-3 pl-12 flex justify-start items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-200"></div>
+              <div className="col-span-3 pl-12 flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
               </div>
 
-              {/* Second column - country name */}
-              <div className="col-span-6 flex justify-start">
-                <h2 className="text-base font-semibold text-column-text">
-                  {country.name.common}
-                </h2>
-              </div>
+              <h2 className="col-span-5 font-assistant text-base font-semibold text-column-text">
+                {country.name.common}
+              </h2>
 
-              {/* Third column - continent */}
-              <div className="col-span-3 flex justify-start">
-                <p className="text-base font-semibold text-column-text">
-                  {country.continents[0] ?? ""}
-                </p>
-              </div>
+              <p className="col-span-4 font-assistant text-base font-semibold text-column-text">
+                {country.continents[0] ?? ""}
+              </p>
             </div>
           </Link>
         ))}
