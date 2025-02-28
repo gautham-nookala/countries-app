@@ -9,12 +9,10 @@ export default {
         "app-bg": "#F1F2F6",
         "heading-color": "#2D124C",
         "subtitle-color": "#6B6374",
-      },
-      borderRadius: {
-        xl: "20px",
+        "primary-dark": "#1C122C",
       },
       boxShadow: {
-        card: "0px 10px 20px 0px rgba(123, 137, 158, 0.08)",
+        card: "0px 10px 20px rgba(123, 137, 158, 0.08)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
