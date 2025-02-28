@@ -2,13 +2,7 @@ import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import CountryListItem from "./CountryListItem";
 import PageHeader from "./PageHeader";
-
-// Reusable LoadingState Component
-const LoadingState = () => (
-  <div className="flex justify-center items-center min-h-screen bg-app-bg">
-    <div className="text-2xl font-bold text-column-text">Loading...</div>
-  </div>
-);
+import LoadingState from "./LoadingState";
 
 // Reusable NoResultsState Component
 interface NoResultsStateProps {
@@ -36,7 +30,7 @@ const CountriesList = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,continents,cca3")
       .then((response) => response.json())
       .then((data) => {
         // Sort countries alphabetically by name
@@ -66,6 +60,7 @@ const CountriesList = () => {
     setFilteredCountries(filtered);
   };
 
+  // Loading State
   if (loading) {
     return <LoadingState />;
   }
