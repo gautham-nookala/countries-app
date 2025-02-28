@@ -1,46 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-
-// Reusable Card Component
-interface CardProps {
-  title: string;
-  value: string;
-  className?: string;
-}
-
-const InfoCard = ({ title, value, className = "" }: CardProps) => (
-  <div
-    className={`bg-white rounded-xl shadow-card p-6 font-assistant captialize ${className}`}
-  >
-    <p className="text-base font-normal text-header-text mb-8">{title}</p>
-    <p className="font-normal text-3xl text-column-text leading-6">{value}</p>
-  </div>
-);
-
-// Image Card Component
-interface ImageCardProps {
-  svg?: string;
-  png?: string;
-  alt?: string;
-  countryName: string;
-}
-
-const ImageCard = ({ svg, png, alt, countryName }: ImageCardProps) => (
-  <div className="bg-white rounded-xl shadow-card p-6 flex flex-col gap-8 w-full md:w-80 font-assistant">
-    <div className="w-full">
-      <p className="text-base font-normal text-header-text mb-2">
-        Country Flag
-      </p>
-    </div>
-    {(svg || png) && (
-      <img
-        src={svg || png}
-        alt={alt || `Flag of ${countryName}`}
-        className="w-full h-auto rounded-xl"
-      />
-    )}
-  </div>
-);
+import { Card, ImageCard } from "./Cards";
 
 // Country Detail Interface
 interface CountryDetail {
@@ -149,14 +109,14 @@ const CountryDetail = () => {
 
         {/* Center column - Population and Language */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
-          <InfoCard title="Population" value={formattedPopulation} />
-          <InfoCard title="Language" value={languages} />
+          <Card title="Population" value={formattedPopulation} />
+          <Card title="Language" value={languages} />
         </div>
 
         {/* Right column - Capital and Currency */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
-          <InfoCard title="Capital" value={country.capital?.[0] || "N/A"} />
-          <InfoCard title="Currency" value={currency} />
+          <Card title="Capital" value={country.capital?.[0] || "N/A"} />
+          <Card title="Currency" value={currency} />
         </div>
       </div>
     </div>
