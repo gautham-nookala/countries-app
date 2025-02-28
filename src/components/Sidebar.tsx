@@ -44,7 +44,7 @@ const Sidebar: React.FC = () => {
 
       {/* Sidebar - hidden on mobile unless toggled */}
       <div
-        className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl rounded-r-[2em] z-40 transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl rounded-[2em] z-40 transition-all duration-300 ease-in-out ${
           isOpen
             ? "w-64 translate-x-0"
             : "w-64 -translate-x-full md:translate-x-0 md:left-2 md:top-2 md:h-[calc(100vh-16px)]"
