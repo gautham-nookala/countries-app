@@ -1,37 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import SearchInput from "./Search";
-import CountryListItem from "./CountryList";
-
-// Reusable PageHeader Component
-interface PageHeaderProps {
-  title: string;
-  subtitle: string;
-}
-
-const PageHeader = ({ title, subtitle }: PageHeaderProps) => (
-  <>
-    <h1 className="font-inter text-5xl font-semibold leading-tight mb-3 text-left text-heading-color">
-      {title}
-    </h1>
-    <h2 className="font-inter text-base font-normal mb-11 text-subtitle-color">
-      {subtitle}
-    </h2>
-  </>
-);
-
-// Reusable DataTableHeader Component
-const DataTableHeader = () => (
-  <div className="w-full mb-4">
-    <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
-      <div className="col-span-3 pl-12">Country Identifier</div>
-      <div className="col-span-5">Country</div>
-      <div className="col-span-4">Continent</div>
-    </div>
-  </div>
-);
-
-
+import SearchInput from "./SearchInput";
+import CountryListItem from "./CountryListItem";
+import PageHeader from "./PageHeader";
 
 // Reusable LoadingState Component
 const LoadingState = () => (
@@ -51,7 +21,6 @@ const NoResultsState = ({ searchQuery }: NoResultsStateProps) => (
   </div>
 );
 
-// Main Countries List Component
 interface Country {
   cca3: string;
   name: {
@@ -117,7 +86,13 @@ const CountriesList = () => {
         <NoResultsState searchQuery={searchQuery} />
       ) : (
         <>
-          <DataTableHeader />
+          <div className="w-full mb-4">
+            <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
+              <div className="col-span-3 pl-12">Country Identifier</div>
+              <div className="col-span-5">Country</div>
+              <div className="col-span-4">Continent</div>
+            </div>
+          </div>
 
           {/* Countries list */}
           <div className="flex flex-col gap-4">
