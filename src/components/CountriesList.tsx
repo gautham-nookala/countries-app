@@ -14,7 +14,7 @@ const CountriesList: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,continents,cca3")
       .then((response) => response.json())
       .then((data) => {
         // Sort countries alphabetically by name
@@ -40,12 +40,16 @@ const CountriesList: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center text-column-text">
+      <h1 className="font-inter text-5xl font-semibold leading-tight mb-3 text-left text-heading-color">
         Countries
       </h1>
 
+      <h2 className="font-inter text-base font-normal mb-6 text-subtitle-color">
+        A database of the countries of the world
+      </h2>
+
       {/* Column Headers */}
-      <div className="flex items-center p-4 mb-2">
+      <div className="flex items-center p-4 mb-4">
         {/* First column - country identifier with circle */}
         <div className="ml-12 w-12 flex justify-center">
           <span className="text-sm font-normal text-header-text">ID</span>
@@ -64,14 +68,14 @@ const CountriesList: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         {countries.map((country) => (
           <Link
             to={`/country/${country.cca3}`}
             key={country.cca3}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="bg-white rounded-xl shadow-card h-20 hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="flex items-center p-6">
+            <div className="flex items-center h-full">
               {/* First column - country identifier with circle */}
               <div className="ml-12 flex justify-center">
                 <div className="w-12 h-12 rounded-full bg-gray-200"></div>
