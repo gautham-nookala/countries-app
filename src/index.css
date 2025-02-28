@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  *, 
+  *::before, 
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
 /* Set body background */
 body {
   font-family: 'Assistant', sans-serif;

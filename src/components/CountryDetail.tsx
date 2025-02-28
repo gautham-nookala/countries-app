@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Card, ImageCard } from "./Cards";
+import { Card } from "./Cards";
 import PageHeader from "./PageHeader";
 
 // Country Detail Interface
@@ -94,9 +94,9 @@ const CountryDetail = () => {
 
       <div className="flex flex-col md:flex-row gap-4">
         {/* Flag Card */}
-        <ImageCard
+        <Card
           title="Country Flag"
-          image={country.flags.svg || country.flags.png || ''}
+          image={country.flags.svg || country.flags.png || ""}
           alt={country.flags.alt}
           countryName={name}
         />
