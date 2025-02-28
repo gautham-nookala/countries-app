@@ -71,7 +71,7 @@ const CountriesList = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 bg-app-bg">
+    <div>
       <PageHeader
         title="Countries"
         subtitle="A database of the countries of the world"

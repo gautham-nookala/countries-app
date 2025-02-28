@@ -89,7 +89,7 @@ const CountryDetail = () => {
   const name = country.name.common;
 
   return (
-    <div className="container mx-auto p-4 bg-app-bg">
+    <div>
       <PageHeader title={name} subtitle={`A short description about ${name}`} />
 
       <div className="flex flex-col md:flex-row gap-4">

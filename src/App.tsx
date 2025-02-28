@@ -1,17 +1,19 @@
+// src/App.tsx
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CountriesList from "./components/CountriesList";
 import CountryDetail from "./components/CountryDetail";
 import Sidebar from "./components/Sidebar";
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-app-bg">
         {/* Sidebar - present on all routes */}
         <Sidebar />
 
-        {/* Main content area with left margin to accommodate sidebar */}
-        <div className="ml-72 flex-grow p-4">
+        {/* Main content area with responsive margin */}
+        <div className="w-full md:ml-72 transition-all duration-300 p-4">
           <Routes>
             <Route path="/" element={<CountriesList />} />
             <Route path="/country/:countryId" element={<CountryDetail />} />
@@ -20,6 +22,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
