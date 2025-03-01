@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Card } from "./Card";
 import PageHeader from "./PageHeader";
 import LoadingState from "./LoadingState";
+import ErrorState from "./ErrorState";
 
 // Country Detail Interface
 interface CountryDetail {
@@ -55,20 +56,12 @@ const CountryDetail = () => {
       });
   }, [countryId]);
 
-  // Loading State
   if (loading) {
     return <LoadingState />;
   }
 
-  // Error State
   if (error || !country) {
-    return (
-      <div className="container mx-auto p-4 text-center bg-app-bg">
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {error || "Country not found"}
-        </div>
-      </div>
-    );
+    return <ErrorState error={error || "Country not found"} />;
   }
 
   // Data Preparation

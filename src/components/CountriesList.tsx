@@ -3,6 +3,7 @@ import SearchInput from "./SearchInput";
 import CountryListItem from "./CountryListItem";
 import PageHeader from "./PageHeader";
 import Dropdown from "./Dropdown";
+import ErrorState from "./ErrorState";
 
 interface Country {
   cca3: string;
@@ -21,6 +22,7 @@ const CountriesList = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [continentOptions, setContinentOptions] = useState<DropdownOption[]>([
     { value: "all", label: "All Continents" },
@@ -60,8 +62,8 @@ const CountriesList = () => {
         setFilteredCountries(sortedCountries);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching countries:", error);
+      .catch((err) => {
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -105,6 +107,10 @@ const CountriesList = () => {
         <div className="text-2xl font-bold text-column-text">Loading...</div>
       </div>
     );
+  }
+
+  if (error) {
+    return <ErrorState error={error} />;
   }
 
   return (
