@@ -39,7 +39,9 @@ const CountryDetail = () => {
   useEffect(() => {
     if (!countryId) return;
 
-    fetch(`https://restcountries.com/v3.1/alpha/${countryId}`)
+    fetch(
+      `https://restcountries.com/v3.1/alpha/${countryId}?fields=name,currencies,capital,flags,languages,population`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Country not found");
@@ -47,7 +49,7 @@ const CountryDetail = () => {
         return response.json();
       })
       .then((data) => {
-        setCountry(data[0]);
+        setCountry(data);
         setLoading(false);
       })
       .catch((err) => {
