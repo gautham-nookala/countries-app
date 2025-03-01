@@ -16,6 +16,8 @@ The application is deployed at: [https://stalwart-melomakarona-5f8a10.netlify.ap
 - Email address: user@example.com
 - Password: password123
 
+_Note: From time to time the API might return a Bad Gateway error due to possible rate limits. You will see a "Failed to fetch" error message. If this happens, please try again after a short while._
+
 ## Technologies Used
 
 - React
