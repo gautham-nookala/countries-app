@@ -47,6 +47,7 @@ const CountryDetail = () => {
         return response.json();
       })
       .then((data) => {
+        console.log({ data });
         setCountry(data);
         setLoading(false);
       })
@@ -65,12 +66,8 @@ const CountryDetail = () => {
   }
 
   const formattedPopulation = country.population.toLocaleString();
-  const languages = country.languages
-    ? Object.values(country.languages)[0] || "N/A"
-    : "N/A";
-  const currency = country.currencies
-    ? Object.values(country.currencies)[0].name
-    : "N/A";
+  const languages = Object.values(country.languages || {})[0] || "N/A";
+  const currency = Object.values(country.currencies || {})[0]?.name || "N/A";
 
   const name = country.name.common;
 
