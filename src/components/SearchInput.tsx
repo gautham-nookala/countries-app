@@ -60,12 +60,12 @@ const SearchInput = ({
       onSubmit={handleSearch}
       className={`
         flex flex-row items-center 
-        w-[280px] 
-        h-[50px] 
+        w-72 
+        h-12
         px-4 py-0 
         gap-3 
         bg-white/25 
-        rounded-[25px] 
+        rounded-3xl
         shadow-[0px_6px_12px_rgba(142,152,157,0.08)]
         backdrop-blur-[5px]
         border border-white/25

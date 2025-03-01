@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface DropdownOption {
   value: string;
@@ -12,12 +12,12 @@ interface DropdownProps {
   placeholder?: string;
 }
 
-const Dropdown = ({
+const Dropdown: React.FC<DropdownProps> = ({
   options,
   defaultValue,
   onChange,
   placeholder = "Select an option",
-}: DropdownProps) => {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | undefined>(
     defaultValue
@@ -38,47 +38,50 @@ const Dropdown = ({
     <div className="relative">
       {/* Dropdown trigger button */}
       <button
-        className="flex items-center justify-between w-40 px-4 py-3 bg-white/25 backdrop-blur-sm text-column-text font-assistant font-semibold text-base rounded-3xl shadow-sm hover:bg-white/30 transition-colors"
+        className="flex items-center justify-between w-40 px-4 py-3 bg-white text-column-text font-assistant font-semibold text-base rounded-3xl shadow-sm"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="truncate">{selectedLabel}</span>
         <span className="ml-2">
-          {/* Placeholder for chevron icon */}
-          <div className="w-5 h-5 flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          >
+            <path
+              d="M5 7.5L10 12.5L15 7.5"
+              stroke="#000315"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={`w-4 h-4 transition-transform duration-200 ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            >
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
+            />
+          </svg>
         </span>
       </button>
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white/25 backdrop-blur-sm rounded-xl shadow-md py-2 max-h-80 overflow-y-auto">
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className={`px-4 py-2 text-base font-assistant cursor-pointer hover:bg-white/50 transition-colors ${
-                option.value === selectedOption
-                  ? "font-semibold text-column-text"
-                  : "text-column-text/70"
-              }`}
-              onClick={() => handleOptionClick(option.value)}
-            >
-              {option.label}
-            </div>
-          ))}
+        <div className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-md py-5 max-h-80 overflow-y-auto">
+          <div className="px-5 py-0 space-y-4">
+            {options.map((option) => (
+              <div
+                key={option.value}
+                className={`py-1 text-base font-assistant cursor-pointer text-column-text/70 hover:text-column-text hover:font-semibold transition-colors ${
+                  option.value === selectedOption
+                    ? "font-semibold text-column-text"
+                    : ""
+                }`}
+                onClick={() => handleOptionClick(option.value)}
+              >
+                {option.label}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

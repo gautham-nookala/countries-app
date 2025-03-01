@@ -2,19 +2,7 @@ import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import CountryListItem from "./CountryListItem";
 import PageHeader from "./PageHeader";
-import LoadingState from "./LoadingState";
 import Dropdown from "./Dropdown";
-
-// Reusable NoResultsState Component
-interface NoResultsStateProps {
-  searchQuery: string;
-}
-
-const NoResultsState = ({ searchQuery }: NoResultsStateProps) => (
-  <div className="text-center text-header-text">
-    No countries found matching "{searchQuery}"
-  </div>
-);
 
 interface Country {
   cca3: string;
@@ -24,11 +12,20 @@ interface Country {
   continents: string[];
 }
 
+interface DropdownOption {
+  value: string;
+  label: string;
+}
+
 const CountriesList = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [continentOptions, setContinentOptions] = useState<DropdownOption[]>([
+    { value: "all", label: "All Continents" },
+  ]);
+  const [selectedContinent, setSelectedContinent] = useState("all");
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=name,continents,cca3")
@@ -38,6 +35,27 @@ const CountriesList = () => {
         const sortedCountries = [...data].sort((a, b) =>
           a.name.common.localeCompare(b.name.common)
         );
+
+        // Extract unique continents for dropdown
+        const continentSet = new Set<string>();
+        sortedCountries.forEach((country) => {
+          if (country.continents && country.continents.length > 0) {
+            continentSet.add(country.continents[0]);
+          }
+        });
+
+        // Create continent options for dropdown
+        const options: DropdownOption[] = [
+          { value: "all", label: "All Continents" },
+          ...Array.from(continentSet)
+            .sort()
+            .map((continent) => ({
+              value: continent.toLowerCase(),
+              label: continent,
+            })),
+        ];
+
+        setContinentOptions(options);
         setCountries(sortedCountries);
         setFilteredCountries(sortedCountries);
         setLoading(false);
@@ -48,34 +66,46 @@ const CountriesList = () => {
       });
   }, []);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
+  // Filter countries by both search query and selected continent
+  const filterCountries = (query: string, continent: string) => {
+    let filtered = [...countries];
 
-    // Filter countries based on name or continent
-    const filtered = countries.filter(
-      (country) =>
-        country.name.common.toLowerCase().includes(query.toLowerCase()) ||
-        country.continents[0]?.toLowerCase().includes(query.toLowerCase())
-    );
+    // Filter by search query
+    if (query) {
+      filtered = filtered.filter(
+        (country) =>
+          country.name.common.toLowerCase().includes(query.toLowerCase()) ||
+          country.continents[0]?.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    // Filter by continent
+    if (continent !== "all") {
+      filtered = filtered.filter(
+        (country) => country.continents[0]?.toLowerCase() === continent
+      );
+    }
 
     setFilteredCountries(filtered);
   };
 
-  // Loading State
-  if (loading) {
-    return <LoadingState />;
-  }
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    filterCountries(query, selectedContinent);
+  };
 
-  const continentOptions = [
-    { value: "all", label: "All" },
-    { value: "africa", label: "Africa" },
-    { value: "asia", label: "Asia" },
-    { value: "europe", label: "Europe" },
-    { value: "oceania", label: "Oceania" },
-    { value: "north-america", label: "North America" },
-    { value: "south-america", label: "South America" },
-    { value: "antarctica", label: "Antarctica" },
-  ];
+  const handleContinentChange = (value: string) => {
+    setSelectedContinent(value);
+    filterCountries(searchQuery, value);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-app-bg">
+        <div className="text-2xl font-bold text-column-text">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full">
@@ -91,7 +121,7 @@ const CountriesList = () => {
             <Dropdown
               options={continentOptions}
               defaultValue="all"
-              onChange={(value) => console.log(`Selected: ${value}`)}
+              onChange={handleContinentChange}
               placeholder="Filter by continent"
             />
           </div>
@@ -116,7 +146,9 @@ const CountriesList = () => {
         style={{ maxHeight: "calc(100vh - 15em)" }}
       >
         {filteredCountries.length === 0 ? (
-          <NoResultsState searchQuery={searchQuery} />
+          <div className="text-center text-header-text">
+            No countries found matching "{searchQuery}"
+          </div>
         ) : (
           <div className="flex flex-col gap-4">
             {filteredCountries.map((country) => (
