@@ -81,20 +81,18 @@ const CountryDetail = () => {
     <div>
       <PageHeader title={name} subtitle={`A short description about ${name}`} />
 
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card
           title="Country Flag"
           image={country.flags.svg || country.flags.png || ""}
           alt={country.flags.alt}
-          countryName={name}
+          countryName={country.name.common}
+          className="md:col-span-1"
         />
 
-        <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:col-span-2">
           <Card title="Population" value={formattedPopulation} />
           <Card title="Language" value={languages} />
-        </div>
-
-        <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
           <Card title="Capital" value={country.capital?.[0] || "N/A"} />
           <Card title="Currency" value={currency} />
         </div>

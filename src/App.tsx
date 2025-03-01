@@ -34,7 +34,7 @@ const App = () => {
             <ProtectedRoute>
               <div className="flex min-h-screen bg-app-bg">
                 <Sidebar />
-                <div className="w-full md:ml-72 transition-all duration-300 p-12">
+                <div className="w-full md:ml-64 lg:ml transition-all duration-300 p-12">
                   <Outlet />
                 </div>
               </div>

@@ -21,22 +21,29 @@ export const Card = ({
       rounded-xl 
       shadow-card 
       p-6
-      ${image ? "flex flex-col gap-8 w-full md:w-80" : ""}
+      flex 
+      flex-col 
+      h-full
+      ${image ? "items-center" : ""}
       ${className}
     `}
   >
-    <div className="w-full">
-      <p className="text-base font-normal text-header-text mb-8">{title}</p>
+    <div className="w-full mb-4">
+      <p className="text-base font-normal text-header-text">{title}</p>
     </div>
 
     {image ? (
-      <img
-        src={image}
-        alt={alt || `Flag of ${countryName}`}
-        className="w-full h-auto rounded-xl"
-      />
+      <div className="w-full flex justify-center">
+        <img
+          src={image}
+          alt={alt || `Flag of ${countryName}`}
+          className="w-full h-44 rounded-xl object-cover"
+        />
+      </div>
     ) : (
-      <p className="font-normal text-3xl text-column-text leading-6">{value}</p>
+      <p className="font-normal text-xl lg:text-3xl text-column-text leading-tight">
+        {value}
+      </p>
     )}
   </div>
 );
