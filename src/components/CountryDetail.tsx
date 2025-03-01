@@ -28,6 +28,8 @@ interface CountryDetail {
   };
 }
 
+const countryError = "Country not found";
+
 const CountryDetail = () => {
   const { countryId } = useParams<{ countryId: string }>();
   const [country, setCountry] = useState<CountryDetail | null>(null);
@@ -42,7 +44,7 @@ const CountryDetail = () => {
     )
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Country not found");
+          throw new Error(countryError);
         }
         return response.json();
       })
@@ -61,7 +63,7 @@ const CountryDetail = () => {
   }
 
   if (error || !country) {
-    return <ErrorState error={error || "Country not found"} />;
+    return <ErrorState error={error || countryError} />;
   }
 
   const name = country.name.common;
