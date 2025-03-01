@@ -65,11 +65,10 @@ const CountryDetail = () => {
     return <ErrorState error={error || "Country not found"} />;
   }
 
+  const name = country.name.common;
   const formattedPopulation = country.population.toLocaleString();
   const languages = Object.values(country.languages || {})[0] || "N/A";
   const currency = Object.values(country.currencies || {})[0]?.name || "N/A";
-
-  const name = country.name.common;
 
   return (
     <div>
