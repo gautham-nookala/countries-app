@@ -36,9 +36,17 @@ gauthamnkl@gmail.com
    ```
 
 4. Preview production build:
+
    ```
    npm run preview
    ```
+
+5. Follow the link that gets outputted in the terminal to open in browser
+
+### Login Credentials
+
+- Email address: user@example.com
+- Password: password123
 
 ## Features
 
@@ -60,11 +68,18 @@ gauthamnkl@gmail.com
 8. Add proper state management using Context API or Redux for shared state, authentication, and theming
 9. Implement SEO optimizations
 10. Improve accessibility with better contrast ratios based on designer's input
-11. Clean up components to extract more common logic and keep them small - given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used
+11. Swap placeholder container for country identifier and user avatar
+12. Clean up components to extract more common logic and keep them small - given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used
 
-## Screenshots
+## Performance Benchmarks
 
-![Dashboard](/dashboard.png)
+### Desktop
+
+![Desktop](./public/lighthouse-desktop.png)
+
+### Mobile
+
+![Mobile](./public/lighthouse-mobile.png)
 
 ## License
 
