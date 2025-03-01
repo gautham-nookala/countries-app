@@ -92,7 +92,6 @@ const SearchInput = ({
           flex-grow 
           bg-transparent 
           text-sm 
-          font-assistant 
           outline-none 
           w-full
           ${isFocused ? "text-column-text" : "text-header-text"}

@@ -132,7 +132,7 @@ const CountriesList = () => {
 
         {/* Table headers - also fixed */}
         <div className="w-full mb-4">
-          <div className="grid grid-cols-12 font-assistant text-sm font-normal text-header-text">
+          <div className="grid grid-cols-12 text-sm font-normal text-header-text">
             <div className="col-span-3 pl-6 md:pl-12">Country Identifier</div>
             <div className="col-span-5">Country</div>
             <div className="col-span-4">Continent</div>

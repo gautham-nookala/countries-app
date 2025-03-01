@@ -20,8 +20,7 @@ export const Card = ({
       bg-white 
       rounded-xl 
       shadow-card 
-      p-6 
-      font-assistant 
+      p-6
       ${image ? "flex flex-col gap-8 w-full md:w-80" : ""}
       ${className}
     `}
