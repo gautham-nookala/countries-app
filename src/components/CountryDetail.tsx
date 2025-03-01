@@ -47,7 +47,6 @@ const CountryDetail = () => {
         return response.json();
       })
       .then((data) => {
-        console.log({ data });
         setCountry(data);
         setLoading(false);
       })
