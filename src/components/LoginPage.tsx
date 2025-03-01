@@ -39,10 +39,7 @@ const LoginPage = () => {
           )}
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-header-text mb-2"
-            >
+            <label htmlFor="email" className="block text-header-text mb-2">
               Email
             </label>
             <input
@@ -68,10 +65,7 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-header-text mb-2"
-            >
+            <label htmlFor="password" className="block text-header-text mb-2">
               Password
             </label>
             <input
@@ -111,7 +105,7 @@ const LoginPage = () => {
               focus:ring-primary-dark
             "
           >
-            Login
+            Log In
           </button>
 
           <p className="text-center text-header-text text-sm mt-4">
