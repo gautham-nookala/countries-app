@@ -20,7 +20,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-white rounded-3xl overflow-hidden">
+    <div className="min-h-screen flex bg-white rounded-3xl overflow-hidden m-6 shadow-card">
       <div className="w-1/2 flex items-center justify-center p-8">
         <div className="max-w-md w-full">
           <div className="mb-8">
