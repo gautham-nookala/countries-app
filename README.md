@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# Countries App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Learn all about the countries of the world.
 
-Currently, two official plugins are available:
+## Author
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Gautham Nookala  
+gauthamnkl@gmail.com
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- NPM
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## How to Run
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```
+   npm install
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2. Start development server:
+
+   ```
+   npm run dev
+   ```
+
+3. Build for production:
+
+   ```
+   npm run build
+   ```
+
+4. Preview production build:
+   ```
+   npm run preview
+   ```
+
+## Features
+
+- Browse and search countries from around the world
+- View detailed information about each country
+- Responsive design that works on desktop and mobile devices
+- Clean, intuitive user interface
+- Basic authentication with router guard implementation
+
+## Future Improvements
+
+1. Implement virtualization for long lists to improve performance
+2. Add pagination for better navigation through large datasets
+3. Enhance UX by remembering a country's position in the list when navigating back
+4. Improve error handling and add fallback UI
+5. Refine responsiveness based on specific mobile designs rather than assumptions
+6. Implement actual user authentication and account management
+7. Create separate custom hooks for data fetching to improve code organization
+8. Add proper state management using Context API or Redux for shared state, authentication, and theming
+9. Implement SEO optimizations
+10. Improve accessibility with better contrast ratios based on designer's input
+11. Clean up components to extract more common logic and keep them small - given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used
+
+## Screenshots
+
+![Dashboard](/dashboard.png)
+
+## License
+
+MIT
