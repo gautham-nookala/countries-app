@@ -20,14 +20,20 @@ const SearchIcon = ({ isFocused }: { isFocused?: boolean }) => (
         cx="7"
         cy="7"
         r="5"
-        stroke={isFocused ? "#202543" : "#9B9EAC"}
+        stroke="currentColor"
+        className={`
+    ${isFocused ? "stroke-column-text" : "stroke-header-text"}
+  `}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M10.6667 10.6667L14.0001 14"
-        stroke={isFocused ? "#202543" : "#9B9EAC"}
+        stroke="currentColor"
+        className={`
+    ${isFocused ? "stroke-column-text" : "stroke-header-text"}
+  `}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

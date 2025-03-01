@@ -54,7 +54,8 @@ const Dropdown: React.FC<DropdownProps> = ({
         >
           <path
             d="M5 7.5L10 12.5L15 7.5"
-            stroke="#000315"
+            stroke="currentColor"
+            className="stroke-primary-darker"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -93,7 +94,8 @@ const Dropdown: React.FC<DropdownProps> = ({
                     <path
                       opacity="0.7"
                       d="M16.6666 5L7.49992 14.1667L3.33325 10"
-                      stroke="#202543"
+                      stroke="currentColor"
+                      className="stroke-column-text"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"

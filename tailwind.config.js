@@ -10,6 +10,7 @@ export default {
         "heading-color": "#2D124C",
         "subtitle-color": "#6B6374",
         "primary-dark": "#1C122C",
+        "primary-darker": "#000315",
       },
       boxShadow: {
         card: "0px 10px 20px rgba(123, 137, 158, 0.08)",
