@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface DropdownOption {
   value: string;
@@ -12,12 +12,12 @@ interface DropdownProps {
   placeholder?: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown = ({
   options,
   defaultValue,
   onChange,
   placeholder = "Select an option",
-}) => {
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | undefined>(
     defaultValue

@@ -1,11 +1,9 @@
-// src/App.tsx
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CountriesList from "./components/CountriesList";
 import CountryDetail from "./components/CountryDetail";
 import Sidebar from "./components/Sidebar";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-app-bg">
