@@ -37,6 +37,7 @@ export const Card = ({
           src={image}
           alt={alt || `Flag of ${countryName}`}
           className="w-64 h-full rounded-xl object-fit"
+          loading="lazy"
         />
       </div>
     ) : (

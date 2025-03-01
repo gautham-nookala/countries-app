@@ -92,6 +92,7 @@ const LoginPage = () => {
 
           <button
             type="submit"
+            aria-label="Log In" 
             className="
               w-full 
               py-3 

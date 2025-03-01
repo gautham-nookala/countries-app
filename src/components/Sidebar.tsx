@@ -9,8 +9,10 @@ const Sidebar = () => {
   return (
     <>
       <button
+        role="button"
         onClick={() => setIsOpen(!isOpen)}
         className="fixed z-50 top-4 right-4 w-10 h-10 rounded-full bg-heading-color text-white flex items-center justify-center md:hidden"
+        aria-label="Open Navigation"
       >
         {isOpen ? (
           <svg
@@ -73,6 +75,7 @@ const Sidebar = () => {
             to="/"
             className="flex items-center gap-4"
             onClick={() => setIsOpen(false)}
+            aria-label="Countries List"
           >
             <div className="w-11 h-11 bg-heading-color rounded-full flex items-center justify-center">
               <svg
@@ -109,6 +112,7 @@ const Sidebar = () => {
           role="button"
           className="absolute bottom-8 left-8 flex items-center gap-4"
           onClick={logout}
+          aria-label="Logout"
         >
           <div className="w-11 h-11 bg-heading-color/[0.04] rounded-full flex items-center justify-center">
             <svg

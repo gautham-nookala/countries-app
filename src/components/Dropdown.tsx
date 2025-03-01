@@ -39,6 +39,7 @@ const Dropdown = ({
       <button
         className="flex items-center justify-between w-72 md:w-[10.5em] px-4 py-3 bg-white text-column-text font-semibold text-base rounded-3xl shadow-card"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle Dropdown"
       >
         <span className="mr-2">{selectedLabel}</span>
         <svg
