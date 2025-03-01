@@ -44,6 +44,7 @@ const App = () => {
           <Route index element={<CountriesList />} />
           <Route path="/country/:countryId" element={<CountryDetail />} />
         </Route>
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

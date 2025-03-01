@@ -12,7 +12,6 @@ const useAuth = () => {
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
       localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
-      window.location.href = "/";
       return true;
     }
     return false;
