@@ -38,7 +38,7 @@ const Dropdown = ({
     <div className="relative">
       {/* Dropdown trigger button */}
       <button
-        className="flex items-center justify-between w-[10.5em] px-4 py-3 bg-white text-column-text font-semibold text-base rounded-3xl shadow-card"
+        className="flex items-center justify-between w-72 md:w-[10.5em] px-4 py-3 bg-white text-column-text font-semibold text-base rounded-3xl shadow-card"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="mr-2">{selectedLabel}</span>
@@ -65,7 +65,7 @@ const Dropdown = ({
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="absolute z-50 w-[10.5em] mt-2 bg-white rounded-xl shadow-card py-5">
+        <div className="absolute z-50 w-72 md:w-[10.5em] mt-2 bg-white rounded-xl shadow-card py-5">
           <div className="px-5 py-0 space-y-4">
             {options.map((option) => (
               <div
