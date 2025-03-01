@@ -1,25 +1,17 @@
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState("");
+  const { login } = useAuth();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Hardcoded credentials
-    const VALID_EMAIL = "user@example.com";
-    const VALID_PASSWORD = "password123";
-
-    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-      // Store login state (simple localStorage implementation)
-      localStorage.setItem("isLoggedIn", "true");
-      setIsLoggedIn(true);
-      setError("");
-
-      // Redirect (this will be handled by the router in the main App component)
+    if (login(email, password)) {
+      // Redirect will be handled by the router
       window.location.href = "/";
     } else {
       setError("Invalid email or password");
