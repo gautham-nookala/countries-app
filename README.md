@@ -16,8 +16,6 @@ The application is deployed at: [https://stalwart-melomakarona-5f8a10.netlify.ap
 - Email address: user@example.com
 - Password: password123
 
-_Note: Direct routing to a country (e.g., `https://stalwart-melomakarona-5f8a10.netlify.app/country/CAN`) doesn't seem to be working on Netlify but does work in the local environment. This is related to how Netlify handles client-side routing and could be fixed with proper configuration._
-
 ## Technologies Used
 
 - React
