@@ -79,7 +79,7 @@ const CountryDetail = () => {
           title="Country Flag"
           image={country.flags.svg || country.flags.png || ""}
           alt={country.flags.alt}
-          countryName={country.name.common}
+          countryName={name}
           className="md:col-span-1"
         />
 
