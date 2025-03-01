@@ -3,6 +3,7 @@ import SearchInput from "./SearchInput";
 import CountryListItem from "./CountryListItem";
 import PageHeader from "./PageHeader";
 import LoadingState from "./LoadingState";
+import Dropdown from "./Dropdown";
 
 // Reusable NoResultsState Component
 interface NoResultsStateProps {
@@ -65,6 +66,17 @@ const CountriesList = () => {
     return <LoadingState />;
   }
 
+  const continentOptions = [
+    { value: "all", label: "All" },
+    { value: "africa", label: "Africa" },
+    { value: "asia", label: "Asia" },
+    { value: "europe", label: "Europe" },
+    { value: "oceania", label: "Oceania" },
+    { value: "north-america", label: "North America" },
+    { value: "south-america", label: "South America" },
+    { value: "antarctica", label: "Antarctica" },
+  ];
+
   return (
     <div className="flex flex-col h-full">
       {/* Fixed header section */}
@@ -74,8 +86,18 @@ const CountriesList = () => {
           subtitle="A database of the countries of the world"
         />
 
-        <div className="mb-6">
-          <SearchInput onSearch={handleSearch} placeholder="Search" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6">
+          <div>
+            <Dropdown
+              options={continentOptions}
+              defaultValue="all"
+              onChange={(value) => console.log(`Selected: ${value}`)}
+              placeholder="Filter by continent"
+            />
+          </div>
+          <div className="w-full sm:flex-grow">
+            <SearchInput onSearch={handleSearch} placeholder="Search" />
+          </div>
         </div>
 
         {/* Table headers - also fixed */}
