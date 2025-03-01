@@ -1,4 +1,3 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +10,6 @@
   }
 }
 
-/* Set body background */
 body {
   font-family: 'Assistant', sans-serif;
 }

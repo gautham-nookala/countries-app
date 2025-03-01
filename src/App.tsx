@@ -7,10 +7,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-app-bg">
-        {/* Sidebar - present on all routes */}
         <Sidebar />
-
-        {/* Main content area with responsive margin */}
         <div className="w-full md:ml-72 transition-all duration-300 p-12">
           <Routes>
             <Route path="/" element={<CountriesList />} />

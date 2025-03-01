@@ -6,7 +6,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile menu button - only visible on small screens */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed z-50 top-4 right-4 w-10 h-10 rounded-full bg-heading-color text-white flex items-center justify-center md:hidden"
@@ -42,7 +41,6 @@ const Sidebar = () => {
         )}
       </button>
 
-      {/* Sidebar - hidden on mobile unless toggled */}
       <div
         className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl rounded-[2em] z-40 transition-all duration-300 ease-in-out font-inter ${
           isOpen
@@ -50,10 +48,8 @@ const Sidebar = () => {
             : "w-64 -translate-x-full md:translate-x-0 md:left-2 md:top-2 md:h-[calc(100vh-1em)]"
         }`}
       >
-        {/* Divider lines */}
         <div className="border-b border-primary-dark/5 mx-8 pt-12"></div>
 
-        {/* User profile */}
         <div className="flex items-center gap-4 mx-8 mt-8">
           <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
             {/* User avatar would go here */}
@@ -68,12 +64,9 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* Second divider */}
         <div className="border-b border-primary-dark/5 mx-8 mt-10"></div>
 
-        {/* Navigation items */}
         <div className="mx-8 mt-6 flex flex-col gap-5">
-          {/* Countries navigation item */}
           <Link
             to="/"
             className="flex items-center gap-4"
@@ -110,7 +103,6 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        {/* Logout button at bottom */}
         <div className="absolute bottom-8 left-8 flex items-center gap-4">
           <div className="w-11 h-11 bg-heading-color/[0.04] rounded-full flex items-center justify-center">
             <svg
@@ -134,7 +126,6 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Overlay to close sidebar on mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/20 z-30 md:hidden"

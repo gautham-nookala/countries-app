@@ -80,7 +80,6 @@ const CountryDetail = () => {
       <PageHeader title={name} subtitle={`A short description about ${name}`} />
 
       <div className="flex flex-col md:flex-row gap-4">
-        {/* Flag Card */}
         <Card
           title="Country Flag"
           image={country.flags.svg || country.flags.png || ""}
@@ -88,13 +87,11 @@ const CountryDetail = () => {
           countryName={name}
         />
 
-        {/* Center column - Population and Language */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
           <Card title="Population" value={formattedPopulation} />
           <Card title="Language" value={languages} />
         </div>
 
-        {/* Right column - Capital and Currency */}
         <div className="flex flex-col gap-4 w-full md:w-auto flex-grow">
           <Card title="Capital" value={country.capital?.[0] || "N/A"} />
           <Card title="Currency" value={currency} />

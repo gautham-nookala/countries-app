@@ -115,7 +115,6 @@ const CountriesList = () => {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Fixed header section */}
       <div className="sticky top-0 bg-app-bg z-10 pb-4">
         <PageHeader
           title="Countries"
@@ -136,7 +135,6 @@ const CountriesList = () => {
           </div>
         </div>
 
-        {/* Table headers - also fixed */}
         <div className="w-full mb-4">
           <div className="grid grid-cols-12 text-sm font-normal text-header-text">
             <div className="col-span-3 pl-6 md:pl-12">Country Identifier</div>
@@ -146,7 +144,6 @@ const CountriesList = () => {
         </div>
       </div>
 
-      {/* Scrollable content area */}
       <div
         className="overflow-y-auto"
         style={{ maxHeight: "calc(100vh - 15em)" }}
