@@ -1,10 +1,7 @@
 const SocialButtons = () => {
   return (
-    <div className="flex gap-4 mb-6">
-      <button
-        className="flex items-center justify-center gap-2 w-1/2 border border-header-text/30 rounded-full py-4 px-6 text-sm"
-        aria-label="Sign up with Google"
-      >
+    <>
+      <button className="flex items-center justify-center gap-2 w-full border border-header-text/30 rounded-full py-3 px-4 text-sm">
         <svg
           className="w-5 h-5"
           viewBox="0 0 24 24"
@@ -38,10 +35,7 @@ const SocialButtons = () => {
         </svg>
         Sign up with Google
       </button>
-      <button
-        className="flex items-center justify-center gap-2 w-1/2 border border-header-text/30 rounded-full py-4 px-6 text-sm"
-        aria-label="Sign up with Microsoft"
-      >
+      <button className="flex items-center justify-center gap-2 w-full border border-header-text/30 rounded-full py-3 px-4 text-sm">
         <svg
           className="w-5 h-5"
           viewBox="0 0 26 25"
@@ -67,7 +61,7 @@ const SocialButtons = () => {
         </svg>
         Sign up with Microsoft
       </button>
-    </div>
+    </>
   );
 };
 

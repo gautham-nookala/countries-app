@@ -67,7 +67,7 @@ _Note: From time to time the API might return a Bad Gateway error due to possibl
 ## Future Improvements
 
 1. Add proper state management using Context API or Redux for shared state, authentication, and theming
-2. Implement virtualization for long lists to improve performance
+2. Implement virtualization for long lists, and explore debouncing, throttling, and other React performance optimizations as the app scales
 3. Create separate custom hooks for data fetching to improve code organization
 4. Implement actual user authentication and account management
 5. Clean up components to extract more common logic and keep them small
