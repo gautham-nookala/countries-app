@@ -82,7 +82,11 @@ _Note: From time to time the API might return a Bad Gateway error due to possibl
 14. Refine responsiveness based on specific mobile designs rather than assumptions
 15. Add a custom 404 page
 
-_Note: Given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used in the current implementation._
+## Notes
+
+1. Given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used in the current implementation.
+
+2. While I aimed to achieve pixel-perfect accuracy based on the Figma design, I opted for Tailwind's default styles where applicable to maintain consistency with its design system and responsiveness best practices. These can be easily adjusted if needed.
 
 ## Performance Benchmarks
 
