@@ -204,7 +204,6 @@ const LoginPage = () => {
           </div>
         </div>
 
-        {/* Purple Gradient Section - Hidden on mobile, shown on larger screens */}
         <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-gradient-start to-gradient-end p-8 lg:p-16 flex-col justify-center relative overflow-hidden">
           <div className="text-white">
             <h2 className="text-3xl lg:text-4xl font-semibold leading-tight mb-4">

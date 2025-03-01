@@ -5,7 +5,6 @@ import PageHeader from "./PageHeader";
 import LoadingState from "./LoadingState";
 import ErrorState from "./ErrorState";
 
-// Country Detail Interface
 interface CountryDetail {
   name: {
     common: string;
@@ -29,7 +28,6 @@ interface CountryDetail {
   };
 }
 
-// Country Detail Component
 const CountryDetail = () => {
   const { countryId } = useParams<{ countryId: string }>();
   const [country, setCountry] = useState<CountryDetail | null>(null);
@@ -66,7 +64,6 @@ const CountryDetail = () => {
     return <ErrorState error={error || "Country not found"} />;
   }
 
-  // Data Preparation
   const formattedPopulation = country.population.toLocaleString();
   const languages = country.languages
     ? Object.values(country.languages)[0] || "N/A"
