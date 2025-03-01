@@ -7,6 +7,17 @@ Learn all about the countries of the world.
 Gautham Nookala  
 gauthamnkl@gmail.com
 
+## Live Demo
+
+The application is deployed at: [https://stalwart-melomakarona-5f8a10.netlify.app/](https://stalwart-melomakarona-5f8a10.netlify.app/)
+
+### Login Credentials
+
+- Email address: user@example.com
+- Password: password123
+
+_Note: Direct routing to a country (e.g., `https://stalwart-melomakarona-5f8a10.netlify.app/country/CAN`) doesn't seem to be working on Netlify but does work in the local environment. This is related to how Netlify handles client-side routing and could be fixed with proper configuration._
+
 ## Technologies Used
 
 - React
@@ -43,33 +54,35 @@ gauthamnkl@gmail.com
 
 5. Follow the link that gets outputted in the terminal to open in browser
 
-### Login Credentials
-
-- Email address: user@example.com
-- Password: password123
-
 ## Features
 
 - Browse and search countries from around the world
 - View detailed information about each country
+- Basic authentication with router guard implementation
+- Using best practices in web development
+- Fetching only the fields we need to speed up load times
 - Responsive design that works on desktop and mobile devices
 - Clean, intuitive user interface
-- Basic authentication with router guard implementation
 
 ## Future Improvements
 
-1. Implement virtualization for long lists to improve performance
-2. Add pagination for better navigation through large datasets
-3. Enhance UX by remembering a country's position in the list when navigating back
-4. Improve error handling and add fallback UI
-5. Refine responsiveness based on specific mobile designs rather than assumptions
-6. Implement actual user authentication and account management
-7. Create separate custom hooks for data fetching to improve code organization
-8. Add proper state management using Context API or Redux for shared state, authentication, and theming
-9. Implement SEO optimizations
-10. Improve accessibility with better contrast ratios based on designer's input
+1. Add proper state management using Context API or Redux for shared state, authentication, and theming
+2. Implement virtualization for long lists to improve performance
+3. Create separate custom hooks for data fetching to improve code organization
+4. Implement actual user authentication and account management
+5. Clean up components to extract more common logic and keep them small
+6. Refactor the data table to take keys/values and dynamically generate content as opposed to the current hardcoded nature
+7. Extract SVGs into componentized icons for better maintainability and reusability
+8. Add pagination for better navigation through large datasets
+9. Improve error handling and add fallback UI
+10. Enhance UX by remembering a country's position in the list when navigating back
 11. Swap placeholder container for country identifier and user avatar
-12. Clean up components to extract more common logic and keep them small - given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used
+12. Implement SEO optimizations
+13. Improve accessibility with better contrast ratios based on designer's input
+14. Refine responsiveness based on specific mobile designs rather than assumptions
+15. Add a custom 404 page
+
+_Note: Given the time constraints and to avoid needless complexity for a technical assessment, a more straightforward approach was used in the current implementation._
 
 ## Performance Benchmarks
 
@@ -80,7 +93,3 @@ gauthamnkl@gmail.com
 ### Mobile
 
 ![Mobile](./public/lighthouse-mobile.png)
-
-## License
-
-MIT
