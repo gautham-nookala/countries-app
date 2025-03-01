@@ -105,7 +105,11 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <div className="absolute bottom-8 left-8 flex items-center gap-4">
+        <div
+          role="button"
+          className="absolute bottom-8 left-8 flex items-center gap-4"
+          onClick={logout}
+        >
           <div className="w-11 h-11 bg-heading-color/[0.04] rounded-full flex items-center justify-center">
             <svg
               className="w-5 h-5 text-column-text"
@@ -123,11 +127,9 @@ const Sidebar = () => {
             </svg>
           </div>
           <span className="font-semibold text-base text-column-text opacity-70">
-            <button onClick={logout}>
-              <span className="font-semibold text-base text-column-text opacity-70">
-                Logout
-              </span>
-            </button>
+            <span className="font-semibold text-base text-column-text opacity-70">
+              Logout
+            </span>
           </span>
         </div>
       </div>

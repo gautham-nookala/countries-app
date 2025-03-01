@@ -37,7 +37,7 @@ export const Card = ({
         <img
           src={image}
           alt={alt || `Flag of ${countryName}`}
-          className="w-full h-44 rounded-xl object-cover"
+          className="w-full h-auto rounded-xl object-cover"
         />
       </div>
     ) : (
