@@ -24,11 +24,10 @@ export const Card = ({
       flex 
       flex-col 
       h-full
-      ${image ? "items-center" : ""}
       ${className}
     `}
   >
-    <div className="w-full mb-4">
+    <div className="w-full mb-8">
       <p className="text-base font-normal text-header-text">{title}</p>
     </div>
 
@@ -37,11 +36,11 @@ export const Card = ({
         <img
           src={image}
           alt={alt || `Flag of ${countryName}`}
-          className="w-full h-auto rounded-xl object-cover"
+          className="w-64 h-full rounded-xl object-fit"
         />
       </div>
     ) : (
-      <p className="font-normal text-xl lg:text-3xl text-column-text leading-tight">
+      <p className="font-normal text-xl lg:text-3xl text-column-text leading-tight capitalize">
         {value}
       </p>
     )}
