@@ -25,8 +25,8 @@ const LoginPage = () => {
           onSubmit={handleLogin}
           className="bg-white shadow-card rounded-xl p-8 space-y-6"
         >
-          <h1 className="text-3xl font-inter font-semibold text-column-text text-center mb-6">
-            Login
+          <h1 className="text-3xl font-inter font-semibold text-column-text mb-6">
+            Welcome Back!
           </h1>
 
           {error && (
@@ -41,7 +41,7 @@ const LoginPage = () => {
           <div>
             <label
               htmlFor="email"
-              className="block font-assistant text-header-text mb-2"
+              className="block text-header-text mb-2"
             >
               Email
             </label>
@@ -61,7 +61,6 @@ const LoginPage = () => {
                 focus:outline-none 
                 focus:ring-2 
                 focus:ring-primary-dark 
-                font-assistant 
                 text-column-text
               "
               placeholder="Enter your email"
@@ -71,7 +70,7 @@ const LoginPage = () => {
           <div>
             <label
               htmlFor="password"
-              className="block font-assistant text-header-text mb-2"
+              className="block text-header-text mb-2"
             >
               Password
             </label>
@@ -91,7 +90,6 @@ const LoginPage = () => {
                 focus:outline-none 
                 focus:ring-2 
                 focus:ring-primary-dark 
-                font-assistant 
                 text-column-text
               "
               placeholder="Enter your password"
@@ -106,7 +104,6 @@ const LoginPage = () => {
               bg-primary-dark 
               text-white 
               rounded-xl 
-              font-assistant 
               hover:bg-primary-darker 
               transition-colors 
               focus:outline-none 
@@ -117,7 +114,7 @@ const LoginPage = () => {
             Login
           </button>
 
-          <p className="text-center text-header-text font-assistant text-sm mt-4">
+          <p className="text-center text-header-text text-sm mt-4">
             Hint: Email is user@example.com, Password is password123
           </p>
         </form>

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
     localStorage.getItem("isLoggedIn") === "true"
   );
 
@@ -12,6 +13,7 @@ const useAuth = () => {
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
       localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
+      window.location.href = "/";
       return true;
     }
     return false;
@@ -20,6 +22,7 @@ const useAuth = () => {
   const logout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
+    window.location.href = "/";
   };
 
   return {

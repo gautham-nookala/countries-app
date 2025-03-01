@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
 
   return (
     <>
@@ -121,7 +123,11 @@ const Sidebar = () => {
             </svg>
           </div>
           <span className="font-semibold text-base text-column-text opacity-70">
-            Logout
+            <button onClick={logout}>
+              <span className="font-semibold text-base text-column-text opacity-70">
+                Logout
+              </span>
+            </button>
           </span>
         </div>
       </div>
