@@ -44,7 +44,7 @@ const Sidebar = () => {
 
       {/* Sidebar - hidden on mobile unless toggled */}
       <div
-        className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl rounded-[2em] z-40 transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl rounded-[2em] z-40 transition-all duration-300 ease-in-out font-inter ${
           isOpen
             ? "w-64 translate-x-0"
             : "w-64 -translate-x-full md:translate-x-0 md:left-2 md:top-2 md:h-[calc(100vh-1em)]"
@@ -59,10 +59,10 @@ const Sidebar = () => {
             {/* User avatar would go here */}
           </div>
           <div className="flex flex-col">
-            <span className="font-inter font-semibold text-base text-column-text opacity-70">
+            <span className="font-semibold text-base text-column-text opacity-70">
               Brian Johnson
             </span>
-            <span className="font-inter font-normal text-xs text-column-text opacity-70">
+            <span className="font-normal text-xs text-column-text opacity-70">
               Edit Profile
             </span>
           </div>
@@ -104,7 +104,7 @@ const Sidebar = () => {
                 </defs>
               </svg>
             </div>
-            <span className="font-inter font-semibold text-base text-column-text opacity-70">
+            <span className="font-semibold text-base text-column-text opacity-70">
               Countries
             </span>
           </Link>
@@ -128,7 +128,7 @@ const Sidebar = () => {
               <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
-          <span className="font-inter font-semibold text-base text-column-text opacity-70">
+          <span className="font-semibold text-base text-column-text opacity-70">
             Logout
           </span>
         </div>
