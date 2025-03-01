@@ -81,6 +81,7 @@ const LoginPage = () => {
                 type="button"
                 className="absolute right-3 top-1/2 transform -translate-y-1/2"
                 onClick={() => setShowPassword(!showPassword)}
+                aria-label="Toggle Password Visibility"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +143,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-      <div className="w-1/2 bg-gradient-to-br from-[#6700E9] to-[#D83AFF] p-16 flex flex-col justify-center relative overflow-hidden">
+      <div className="w-1/2 bg-gradient-to-br from-gradient-start to-gradient-end p-16 flex flex-col justify-center relative overflow-hidden">
         <div className="text-white mb-32">
           <h2 className="text-4xl font-semibold leading-tight mb-4">
             The simplest way to track and manage your geographical data
